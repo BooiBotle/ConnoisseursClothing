@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { CartItem, Product, ProductVariant } from '../types';
 import { calculateShippingFee, FREE_SHIPPING_THRESHOLD, SHIPPING_OPTIONS } from '../services/shipping';
+import { getAssetPath } from '../utils/assets';
 
 interface PromoCode {
   code: string;
@@ -105,7 +106,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const cartItemId = `${product.id}-${variant.id}`;
     const effectivePrice = variant.price_override ?? product.sale_price ?? product.base_price;
-    const heroImage = product.images[0]?.image_url || '/products/hoodie_vintage_black_front.jpg';
+    const heroImage = product.images[0]?.image_url || getAssetPath('products/hoodie_vintage_black_front.jpg');
 
     let itemAddedSuccessfully = false;
     let message = '';
@@ -219,8 +220,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const shippingFee = cart.length === 0 ? 0 : calculateShippingFee(selectedShippingId, discountedSubtotal);
   const finalTotal = discountedSubtotal + shippingFee;
 
-  const freeShippingRemaining = Math.max(0, FREE_SHIPPING_THRESHOLD - discountedSubtotal);
-  const freeShippingProgress = Math.min(100, Math.round((discountedSubtotal / FREE_SHIPPING_THRESHOLD) * 100));
+  const freeShippingRemaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
+  const freeShippingProgress = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
 
   return (
     <CartContext.Provider

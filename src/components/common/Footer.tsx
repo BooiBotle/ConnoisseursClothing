@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, ShieldCheck, Mail, MapPin, Clock } from 'lucide-react';
 import { dbService } from '../../services/db';
+import { getAssetPath } from '../../utils/assets';
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -92,7 +93,7 @@ export const Footer: React.FC = () => {
             <div className="bg-[#121212] border border-white/10 p-6 rounded-sm max-w-md w-full">
               <div className="flex items-center justify-between mb-4 pb-4 border-b border-white/10">
                 <img
-                  src="/brand/vintage_connoisseurs_light.png"
+                  src={getAssetPath('brand/vintage_connoisseurs_light.png')}
                   alt="Vintage Connoisseurs Brand"
                   className="h-8 w-auto object-contain"
                 />
@@ -118,7 +119,7 @@ export const Footer: React.FC = () => {
           <div className="col-span-2 lg:col-span-2 space-y-4">
             <div className="flex items-center space-x-3">
               <img
-                src="/brand/connoisseurs_show_light.png"
+                src={getAssetPath('brand/connoisseurs_show_light.png')}
                 alt="The Connoisseurs Show"
                 className="h-10 w-auto"
               />
@@ -223,15 +224,15 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Col 4: Legal & Policies */}
+          {/* Col 4: Legal */}
           <div className="space-y-3">
             <h4 className="font-display tracking-widest text-sm text-white uppercase font-bold">
-              LEGAL &amp; COMPLIANCE
+              LEGAL
             </h4>
             <ul className="space-y-2 text-white/60">
               <li>
                 <Link to="/privacy-policy" className="hover:text-white transition-colors">
-                  Privacy Policy (POPIA)
+                  Privacy Policy
                 </Link>
               </li>
               <li>
@@ -240,31 +241,41 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/shipping-returns#consumer-rights" className="hover:text-white transition-colors">
-                  Consumer Protection (CPA)
+                <Link to="/shipping-returns" className="hover:text-white transition-colors">
+                  Shipping &amp; Returns
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Col 5: Social */}
+          <div className="space-y-3">
+            <h4 className="font-display tracking-widest text-sm text-white uppercase font-bold">
+              SOCIAL
+            </h4>
+            <ul className="space-y-2 text-white/60">
               <li>
-                <Link to="/admin" className="hover:text-white transition-colors text-white/30 hover:text-white/80">
-                  Store Management Admin &rarr;
-                </Link>
+                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                  X / Twitter
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar: Payment Badges & Copyright */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/40">
-          <div className="flex items-center space-x-2 text-[11px]">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <span>
-              Secure South African Payments: PayFast • Yoco • Instant EFT • Visa • Mastercard
-            </span>
-          </div>
-
-          <div className="text-center md:text-right font-mono text-[11px]">
-            &copy; {new Date().getFullYear()} The Connoisseurs Show &amp; Vintage Connoisseurs. All Rights Reserved.
-          </div>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] uppercase tracking-[0.2em] text-white/35 font-mono">
+          <span>© 2026 The Connoisseurs Show</span>
+          <span>Crafted for the cultured.</span>
         </div>
       </div>
     </footer>

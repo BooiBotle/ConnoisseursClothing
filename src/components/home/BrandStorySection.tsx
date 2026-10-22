@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Disc, Music2, Radio, Sparkles } from 'lucide-react';
+import { getAssetPath } from '../../utils/assets';
 
 export const BrandStorySection: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ export const BrandStorySection: React.FC = () => {
       {/* Decorative Soundwave & Circular Watermark */}
       <div className="absolute -right-24 top-1/2 -translate-y-1/2 w-96 h-96 opacity-10 pointer-events-none">
         <img
-          src="/brand/connoisseurs_show_light.png"
+          src={getAssetPath('brand/connoisseurs_show_light.png')}
           alt=""
           className="w-full h-full object-contain"
         />
@@ -20,7 +21,7 @@ export const BrandStorySection: React.FC = () => {
           <div className="lg:col-span-6 relative">
             <div className="relative aspect-[4/5] rounded-xs overflow-hidden border border-white/10 shadow-2xl bg-[#141414]">
               <img
-                src="/products/tee_connoisseurs_black_model.jpg"
+                src={getAssetPath('products/tee_connoisseurs_black_model.jpg')}
                 alt="Connoisseurs Streetwear and Music Culture"
                 className="w-full h-full object-cover filter contrast-110"
               />
@@ -43,7 +44,7 @@ export const BrandStorySection: React.FC = () => {
             {/* Accent Distressed Logo Plaque */}
             <div className="absolute -bottom-6 -right-6 hidden sm:block p-4 bg-[#141414] border border-white/15 rounded-xs shadow-2xl max-w-xs">
               <img
-                src="/brand/vintage_connoisseurs_light.png"
+                src={getAssetPath('brand/vintage_connoisseurs_light.png')}
                 alt="Vintage Connoisseurs Insignia"
                 className="h-10 w-auto"
               />
@@ -119,7 +120,7 @@ export const BrandStorySection: React.FC = () => {
                 to="/about"
                 className="inline-flex items-center space-x-3 px-6 py-3.5 bg-white text-black font-display text-sm uppercase tracking-widest font-bold hover:bg-neutral-200 transition-colors rounded-xs group"
               >
-                <span>EXPLORE OUR HERITAGE &amp; STORY</span>
+                <span>OUR STORY</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>

@@ -4,6 +4,7 @@ import { Eye, ShoppingBag, Sparkles, Check } from 'lucide-react';
 import { Product } from '../../types';
 import { formatZAR } from '../../utils/formatters';
 import { useCart } from '../../context/CartContext';
+import { getAssetPath } from '../../utils/assets';
 
 interface ProductCardProps {
   product: Product;
@@ -15,7 +16,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
   const [addedFeedback, setAddedFeedback] = useState(false);
   const { addToCart } = useCart();
 
-  const primaryImage = product.images[0]?.image_url || '/products/hoodie_vintage_black_front.jpg';
+  const primaryImage = product.images[0]?.image_url || getAssetPath('products/hoodie_vintage_black_front.jpg');
   const secondaryImage = product.images[1]?.image_url || primaryImage;
 
   // Active variants and stock

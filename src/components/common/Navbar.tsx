@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Search, ShoppingBag, User, Menu, X, ChevronDown, Sparkles } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import { getAssetPath } from '../../utils/assets';
 
 interface NavbarProps {
   onOpenSearch: () => void;
@@ -83,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch }) => {
             <div className="flex items-center space-x-3">
               <Link to="/" className="flex items-center space-x-3 group">
                 <img
-                  src="/brand/connoisseurs_show_light.png"
+                  src={getAssetPath('brand/connoisseurs_show_light.png')}
                   alt="The Connoisseurs Show Logo"
                   className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 />
@@ -211,7 +212,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch }) => {
               {/* Header inside mobile drawer */}
               <div className="flex items-center justify-between pb-6 border-b border-white/10">
                 <Link to="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center space-x-2">
-                  <img src="/brand/connoisseurs_show_light.png" alt="Logo" className="h-10 w-auto" />
+                  <img src={getAssetPath('brand/connoisseurs_show_light.png')} alt="Logo" className="h-10 w-auto" />
                   <span className="font-display text-lg tracking-wider font-bold text-white uppercase">
                     THE CONNOISSEURS SHOW
                   </span>
@@ -309,7 +310,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch }) => {
             {/* Mobile Footer Area */}
             <div className="pt-6 border-t border-white/10">
               <img
-                src="/brand/vintage_connoisseurs_light.png"
+                src={getAssetPath('brand/vintage_connoisseurs_light.png')}
                 alt="Vintage Connoisseurs"
                 className="h-8 w-auto opacity-75 mb-3"
               />

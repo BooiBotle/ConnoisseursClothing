@@ -24,6 +24,7 @@ import { dbService } from '../services/db';
 import { formatZAR, formatDate, slugify } from '../utils/formatters';
 import { Order, OrderStatus, Product, ProductVariant } from '../types';
 import { isSupabaseConfigured } from '../services/supabase';
+import { getAssetPath } from '../utils/assets';
 
 export const AdminDashboardPage: React.FC = () => {
   const { isAdminAuthenticated, adminUser, login, logout } = useAdmin();
@@ -65,7 +66,7 @@ export const AdminDashboardPage: React.FC = () => {
     featured: false,
     is_new_drop: true,
     is_limited_edition: false,
-    image_url: '/products/hoodie_vintage_black_front.jpg',
+    image_url: getAssetPath('products/hoodie_vintage_black_front.jpg'),
     sizes: ['S', 'M', 'L', 'XL'],
     colour: 'Vintage Washed Black',
     initialStock: 15
@@ -221,9 +222,9 @@ export const AdminDashboardPage: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full py-3 bg-white text-black font-display tracking-widest text-base font-bold uppercase hover:bg-neutral-200 transition-colors rounded-xs"
+              className="w-full px-4 py-3 bg-white text-black font-display text-sm uppercase tracking-widest font-bold rounded-xs hover:bg-neutral-200 transition-colors"
             >
-              AUTHENTICATE DASHBOARD
+              Access Dashboard
             </button>
           </form>
         </div>
@@ -258,7 +259,7 @@ export const AdminDashboardPage: React.FC = () => {
         <div className="bg-[#121212] border border-white/10 rounded-xs p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center space-x-4">
             <img
-              src="/brand/connoisseurs_show_light.png"
+              src={getAssetPath('brand/connoisseurs_show_light.png')}
               alt="Logo"
               className="h-10 w-auto"
             />
@@ -292,7 +293,7 @@ export const AdminDashboardPage: React.FC = () => {
             </button>
             <button
               onClick={logout}
-              className="px-3 py-2 bg-rose-950/40 hover:bg-rose-900/50 text-rose-300 text-xs font-mono rounded-xs border border-rose-500/30 flex items-center space-x-1.5"
+              className="px-3 py-2 bg-white text-black text-xs font-mono rounded-xs border border-white/10 flex items-center space-x-1.5"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span>Logout</span>

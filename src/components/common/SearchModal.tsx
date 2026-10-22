@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Product } from '../../types';
 import { dbService } from '../../services/db';
 import { formatZAR } from '../../utils/formatters';
+import { getAssetPath } from '../../utils/assets';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -126,7 +127,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                   className="flex items-center space-x-4 p-2.5 rounded hover:bg-white/5 transition-colors group"
                 >
                   <img
-                    src={product.images[0]?.image_url || '/products/hoodie_vintage_black_front.jpg'}
+                    src={product.images[0]?.image_url || getAssetPath('products/hoodie_vintage_black_front.jpg')}
                     alt={product.name}
                     className="w-14 h-16 object-cover rounded bg-[#1e1e1e] flex-shrink-0"
                   />

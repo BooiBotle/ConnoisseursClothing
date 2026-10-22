@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Disc, Sparkles, Music2, ShieldCheck, ArrowRight } from 'lucide-react';
+import { getAssetPath } from '../utils/assets';
 
 export const AboutPage: React.FC = () => {
   return (
@@ -26,7 +27,7 @@ export const AboutPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8 border-y border-white/10">
           <div className="bg-[#121212] border border-white/10 p-8 rounded-xs flex flex-col items-center text-center space-y-4">
             <img
-              src="/brand/connoisseurs_show_light.png"
+              src={getAssetPath('brand/connoisseurs_show_light.png')}
               alt="The Connoisseurs Show Badge"
               className="h-28 w-auto object-contain"
             />
@@ -40,7 +41,7 @@ export const AboutPage: React.FC = () => {
 
           <div className="bg-[#121212] border border-white/10 p-8 rounded-xs flex flex-col items-center text-center space-y-4">
             <img
-              src="/brand/vintage_connoisseurs_light.png"
+              src={getAssetPath('brand/vintage_connoisseurs_light.png')}
               alt="Vintage Connoisseurs Label"
               className="h-20 w-auto object-contain my-auto"
             />
@@ -58,7 +59,7 @@ export const AboutPage: React.FC = () => {
           <div className="lg:col-span-6">
             <div className="aspect-[4/5] rounded-xs overflow-hidden border border-white/10 bg-[#181818] shadow-2xl">
               <img
-                src="/hero/hero_streetwear_editorial.jpg"
+                src={getAssetPath('hero/hero_streetwear_editorial.jpg')}
                 alt="Connoisseurs editorial models"
                 className="w-full h-full object-cover filter contrast-110"
               />

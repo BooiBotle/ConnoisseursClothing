@@ -8,6 +8,9 @@ import {
   Product
 } from '../types';
 import { isSupabaseConfigured, supabase } from './supabase';
+import { getAssetPath } from '../utils/assets';
+
+const publicAsset = (path: string) => getAssetPath(path);
 
 const SEED_CATEGORIES: Category[] = [
   {
@@ -15,35 +18,35 @@ const SEED_CATEGORIES: Category[] = [
     name: 'Hoodies & Sweatshirts',
     slug: 'hoodies-sweatshirts',
     description: 'Heavyweight boxy cuts, luxury French terry cotton, and archival music culture prints.',
-    image_url: '/products/hoodie_vintage_black_front.jpg'
+    image_url: publicAsset('products/hoodie_vintage_black_front.jpg')
   },
   {
     id: 'cat-tees',
     name: 'T-Shirts & Tops',
     slug: 't-shirts',
     description: '280gsm combed cotton vintage oversized t-shirts with retro gramophone graphics.',
-    image_url: '/products/tee_connoisseurs_cream_front.jpg'
+    image_url: publicAsset('products/tee_connoisseurs_cream_front.jpg')
   },
   {
     id: 'cat-caps',
     name: 'Caps & Headwear',
     slug: 'caps-headwear',
     description: 'Vintage washed dad caps, embroidered crests, and antique brass strapbacks.',
-    image_url: '/products/cap_vintage_black.jpg'
+    image_url: publicAsset('products/cap_vintage_black.jpg')
   },
   {
     id: 'cat-limited',
     name: 'Limited Drops',
     slug: 'limited-edition',
     description: 'Numbered collectors merchandise, exclusive colorways, and rare run garments.',
-    image_url: '/hero/hero_streetwear_editorial.jpg'
+    image_url: publicAsset('hero/hero_streetwear_editorial.jpg')
   },
   {
     id: 'cat-accessories',
     name: 'Accessories',
     slug: 'accessories',
     description: 'Canvas record totes, vinyl slipmats, stickers, and everyday lifestyle carry.',
-    image_url: '/products/cap_vintage_strap_detail.jpg'
+    image_url: publicAsset('products/cap_vintage_strap_detail.jpg')
   }
 ];
 
@@ -76,21 +79,21 @@ const SEED_PRODUCTS: Product[] = [
       {
         id: 'img-1a',
         product_id: 'prod-1',
-        image_url: '/products/hoodie_vintage_black_front.jpg',
+        image_url: publicAsset('products/hoodie_vintage_black_front.jpg'),
         alt_text: 'Vintage Connoisseurs Heavyweight Hoodie Front',
         display_order: 1
       },
       {
         id: 'img-1b',
         product_id: 'prod-1',
-        image_url: '/products/hoodie_vintage_black_back.jpg',
+        image_url: publicAsset('products/hoodie_vintage_black_back.jpg'),
         alt_text: 'Vintage Connoisseurs Heavyweight Hoodie Back',
         display_order: 2
       },
       {
         id: 'img-1c',
         product_id: 'prod-1',
-        image_url: '/products/hoodie_vintage_black_detail.jpg',
+        image_url: publicAsset('products/hoodie_vintage_black_detail.jpg'),
         alt_text: 'Hoodie Chest Print Detail',
         display_order: 3
       }
@@ -130,14 +133,14 @@ const SEED_PRODUCTS: Product[] = [
       {
         id: 'img-2a',
         product_id: 'prod-2',
-        image_url: '/products/tee_connoisseurs_cream_front.jpg',
+        image_url: publicAsset('products/tee_connoisseurs_cream_front.jpg'),
         alt_text: 'The Connoisseurs Show Off-White Tee Front',
         display_order: 1
       },
       {
         id: 'img-2b',
         product_id: 'prod-2',
-        image_url: '/products/tee_connoisseurs_cream_detail.jpg',
+        image_url: publicAsset('products/tee_connoisseurs_cream_detail.jpg'),
         alt_text: 'The Connoisseurs Show Off-White Tee Graphic Detail',
         display_order: 2
       }
@@ -176,14 +179,14 @@ const SEED_PRODUCTS: Product[] = [
       {
         id: 'img-3a',
         product_id: 'prod-3',
-        image_url: '/products/tee_connoisseurs_black_model.jpg',
+        image_url: publicAsset('products/tee_connoisseurs_black_model.jpg'),
         alt_text: 'Music Connoisseurs Acid Wash Tee Editorial View',
         display_order: 1
       },
       {
         id: 'img-3b',
         product_id: 'prod-3',
-        image_url: '/products/tee_connoisseurs_cream_front.jpg',
+        image_url: publicAsset('products/tee_connoisseurs_cream_front.jpg'),
         alt_text: 'Music Connoisseurs Graphic Reference',
         display_order: 2
       }
@@ -223,14 +226,14 @@ const SEED_PRODUCTS: Product[] = [
       {
         id: 'img-4a',
         product_id: 'prod-4',
-        image_url: '/products/cap_vintage_black.jpg',
+        image_url: publicAsset('products/cap_vintage_black.jpg'),
         alt_text: 'Vintage Connoisseurs Embroidered Dad Cap',
         display_order: 1
       },
       {
         id: 'img-4b',
         product_id: 'prod-4',
-        image_url: '/products/cap_vintage_strap_detail.jpg',
+        image_url: publicAsset('products/cap_vintage_strap_detail.jpg'),
         alt_text: 'Cap Leather Strap and Brass Buckle Detail',
         display_order: 2
       }
@@ -265,14 +268,14 @@ const SEED_PRODUCTS: Product[] = [
       {
         id: 'img-5a',
         product_id: 'prod-5',
-        image_url: '/hero/hero_streetwear_editorial.jpg',
+        image_url: publicAsset('hero/hero_streetwear_editorial.jpg'),
         alt_text: 'Culture and Rhythm Editorial Shoot',
         display_order: 1
       },
       {
         id: 'img-5b',
         product_id: 'prod-5',
-        image_url: '/products/hoodie_vintage_black_back.jpg',
+        image_url: publicAsset('products/hoodie_vintage_black_back.jpg'),
         alt_text: 'Hoodie Soundwave Back View',
         display_order: 2
       }
@@ -311,7 +314,7 @@ const SEED_PRODUCTS: Product[] = [
       {
         id: 'img-6a',
         product_id: 'prod-6',
-        image_url: '/products/tee_connoisseurs_cream_detail.jpg',
+        image_url: publicAsset('products/tee_connoisseurs_cream_detail.jpg'),
         alt_text: 'Heavyweight Canvas Record Tote',
         display_order: 1
       }

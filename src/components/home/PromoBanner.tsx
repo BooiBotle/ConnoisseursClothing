@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles, Timer } from 'lucide-react';
+import { getAssetPath } from '../../utils/assets';
 
 interface PromoBannerProps {
   headline?: string;
@@ -22,7 +23,7 @@ export const PromoBanner: React.FC<PromoBannerProps> = ({
           {/* Subtle Soundwave Background Graphic */}
           <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-15 pointer-events-none flex items-center justify-end">
             <img
-              src="/brand/connoisseurs_show_light.png"
+              src={getAssetPath('brand/connoisseurs_show_light.png')}
               alt=""
               className="h-full w-auto object-contain translate-x-12"
             />

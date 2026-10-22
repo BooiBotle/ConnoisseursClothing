@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Product, ProductVariant } from '../../types';
 import { formatZAR } from '../../utils/formatters';
 import { useCart } from '../../context/CartContext';
+import { getAssetPath } from '../../utils/assets';
 
 interface QuickViewModalProps {
   product: Product | null;
@@ -39,7 +40,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
     }
   };
 
-  const images = product.images.length > 0 ? product.images : [{ id: '1', product_id: product.id, image_url: '/products/hoodie_vintage_black_front.jpg', alt_text: product.name, display_order: 1 }];
+  const images = product.images.length > 0 ? product.images : [{ id: '1', product_id: product.id, image_url: getAssetPath('products/hoodie_vintage_black_front.jpg'), alt_text: product.name, display_order: 1 }];
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 sm:p-6">
@@ -120,113 +121,72 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   <button
                     type="button"
                     onClick={onOpenSizeGuide}
-                    className="text-[11px] text-white/60 hover:text-white underline underline-offset-4"
+                    className="text-[10px] uppercase tracking-wider font-mono text-white/50 hover:text-white underline underline-offset-2"
                   >
-                    Size Guide (cm)
+                    Size Guide
                   </button>
                 </div>
 
-                <div className="grid grid-cols-5 gap-2">
-                  {activeVariants.map((v) => {
-                    const isSelected = currentVariant?.id === v.id;
-                    const isOut = v.available_stock <= 0;
-                    return (
-                      <button
-                        key={v.id}
-                        type="button"
-                        disabled={isOut}
-                        onClick={() => {
-                          setSelectedVariant(v);
-                          setQuantity(1);
-                        }}
-                        className={`py-2 px-1 text-xs uppercase font-mono font-bold rounded-xs border transition-all ${
-                          isSelected
-                            ? 'bg-white text-black border-white'
-                            : isOut
-                            ? 'border-white/5 text-white/20 line-through cursor-not-allowed bg-white/2'
-                            : 'border-white/20 text-white hover:border-white/50 bg-white/5'
-                        }`}
-                      >
-                        {v.size}
-                      </button>
-                    );
-                  })}
+                <div className="flex flex-wrap gap-2">
+                  {activeVariants.map((variant) => (
+                    <button
+                      key={variant.id}
+                      type="button"
+                      onClick={() => setSelectedVariant(variant)}
+                      className={`px-3 py-2 text-[10px] uppercase tracking-wider border rounded-xs ${
+                        currentVariant?.id === variant.id
+                          ? 'border-white bg-white text-black'
+                          : 'border-white/15 bg-[#1a1a1a] text-white hover:border-white/30'
+                      }`}
+                    >
+                      {variant.size}
+                    </button>
+                  ))}
                 </div>
-
-                {currentVariant && (
-                  <div className="flex items-center justify-between text-[11px] text-white/50 pt-1 font-mono">
-                    <span>Colour: {currentVariant.colour}</span>
-                    <span>
-                      {currentVariant.available_stock > 0
-                        ? `${currentVariant.available_stock} available in stock`
-                        : 'Sold out in this size'}
-                    </span>
-                  </div>
-                )}
               </div>
 
               {/* Quantity */}
-              {currentVariant && currentVariant.available_stock > 0 && (
-                <div className="flex items-center space-x-4 mb-6">
-                  <span className="text-xs uppercase tracking-wider font-semibold text-white">Quantity:</span>
-                  <div className="flex items-center border border-white/20 rounded-xs bg-white/5">
-                    <button
-                      type="button"
-                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="px-3 py-1 text-white/70 hover:text-white"
-                    >
-                      -
-                    </button>
-                    <span className="px-3 text-xs font-mono font-bold">{quantity}</span>
-                    <button
-                      type="button"
-                      onClick={() => setQuantity(Math.min(currentVariant.available_stock, quantity + 1))}
-                      className="px-3 py-1 text-white/70 hover:text-white"
-                    >
-                      +
-                    </button>
-                  </div>
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-xs uppercase tracking-wider font-semibold text-white">Qty:</span>
+                <div className="flex items-center border border-white/15 bg-[#1a1a1a] rounded-xs overflow-hidden">
+                  <button
+                    type="button"
+                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                    className="px-3 py-2 text-white/70 hover:text-white"
+                  >
+                    −
+                  </button>
+                  <span className="w-10 text-center text-xs text-white font-mono">{quantity}</span>
+                  <button
+                    type="button"
+                    onClick={() => setQuantity((q) => Math.min((currentVariant?.available_stock ?? 1), q + 1))}
+                    className="px-3 py-2 text-white/70 hover:text-white"
+                  >
+                    +
+                  </button>
                 </div>
-              )}
+              </div>
             </div>
 
-            {/* Actions */}
-            <div className="space-y-3 pt-4 border-t border-white/10">
-              {feedback && (
-                <div className="flex items-center space-x-2 text-xs font-mono text-emerald-400">
-                  <Check className="w-4 h-4" />
-                  <span>{feedback}</span>
-                </div>
-              )}
-
+            <div className="space-y-3">
               <button
                 type="button"
                 onClick={handleAddToCart}
-                disabled={!currentVariant || currentVariant.available_stock <= 0}
-                className="w-full py-3.5 bg-white text-black font-display tracking-widest text-base font-bold uppercase hover:bg-neutral-200 transition-colors flex items-center justify-center space-x-2 rounded-xs disabled:opacity-30 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-white text-black font-display text-sm uppercase tracking-widest font-bold rounded-xs hover:bg-neutral-200 transition-colors"
               >
                 <ShoppingBag className="w-4 h-4" />
-                <span>
-                  {currentVariant && currentVariant.available_stock > 0
-                    ? 'ADD TO SHOPPING BAG'
-                    : 'OUT OF STOCK'}
-                </span>
+                <span>Add to Bag</span>
               </button>
 
-              <div className="flex items-center justify-between text-xs pt-1">
-                <Link
-                  to={`/product/${product.slug}`}
-                  onClick={onClose}
-                  className="text-white/60 hover:text-white flex items-center space-x-1"
-                >
-                  <span>View full product details</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
+              {feedback && (
+                <div className="text-xs text-emerald-300 font-mono bg-emerald-500/10 border border-emerald-500/30 rounded-xs px-3 py-2">
+                  {feedback}
+                </div>
+              )}
 
-                <span className="flex items-center space-x-1 text-[11px] text-white/40">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Door-to-door SA courier</span>
-                </span>
+              <div className="flex items-center space-x-2 text-[10px] uppercase tracking-wider text-white/45 font-mono">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Secure checkout | Fast shipping</span>
               </div>
             </div>
           </div>

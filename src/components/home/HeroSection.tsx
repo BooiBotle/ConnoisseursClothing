@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Disc3, ShieldCheck, Sparkles } from 'lucide-react';
+import { getAssetPath } from '../../utils/assets';
 
 export const HeroSection: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ export const HeroSection: React.FC = () => {
       {/* Background Hero Image with Dark Gradient Overlays */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/hero/hero_streetwear_editorial.jpg"
+          src={getAssetPath('hero/hero_streetwear_editorial.jpg')}
           alt="The Connoisseurs Show Streetwear Campaign"
           className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-[0.45] scale-100 animate-in fade-in zoom-in-105 duration-1000"
         />
@@ -20,7 +21,7 @@ export const HeroSection: React.FC = () => {
       {/* Floating Accent Watermark / Badge */}
       <div className="absolute top-10 right-6 sm:right-12 z-10 hidden md:block opacity-30 pointer-events-none">
         <img
-          src="/brand/connoisseurs_show_light.png"
+          src={getAssetPath('brand/connoisseurs_show_light.png')}
           alt="Connoisseurs Watermark"
           className="w-44 h-auto animate-spin"
           style={{ animationDuration: '60s' }}

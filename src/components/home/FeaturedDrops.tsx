@@ -6,6 +6,7 @@ import { dbService } from '../../services/db';
 import { ProductCard } from '../shop/ProductCard';
 import { QuickViewModal } from '../shop/QuickViewModal';
 import { SizeGuideModal } from '../shop/SizeGuideModal';
+import { getAssetPath } from '../../utils/assets';
 
 export const FeaturedDrops: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -71,7 +72,7 @@ export const FeaturedDrops: React.FC = () => {
         <div className="mt-14 p-6 bg-[#0f0f0f] border border-white/5 rounded-xs flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-4">
           <div className="flex items-center space-x-4">
             <img
-              src="/brand/vintage_connoisseurs_light.png"
+              src={getAssetPath('brand/vintage_connoisseurs_light.png')}
               alt="Vintage Connoisseurs"
               className="h-7 w-auto object-contain opacity-80"
             />

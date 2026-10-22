@@ -18,6 +18,7 @@ import { formatZAR } from '../utils/formatters';
 import { useCart } from '../context/CartContext';
 import { SizeGuideModal } from '../components/shop/SizeGuideModal';
 import { ProductCard } from '../components/shop/ProductCard';
+import { getAssetPath } from '../utils/assets';
 
 const RECENTLY_VIEWED_KEY = 'tcs_recently_viewed_v1';
 
@@ -119,7 +120,7 @@ export const ProductDetailPage: React.FC = () => {
     setTimeout(() => setAddFeedback(null), 3000);
   };
 
-  const images = product.images.length > 0 ? product.images : [{ id: '1', product_id: product.id, image_url: '/products/hoodie_vintage_black_front.jpg', alt_text: product.name, display_order: 1 }];
+  const images = product.images.length > 0 ? product.images : [{ id: '1', product_id: product.id, image_url: getAssetPath('products/hoodie_vintage_black_front.jpg'), alt_text: product.name, display_order: 1 }];
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#F5F2EC] py-8 sm:py-12">
